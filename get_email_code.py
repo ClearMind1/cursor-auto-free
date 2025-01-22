@@ -66,6 +66,7 @@ class EmailVerificationHandler:
 
             # 提取邮件正文
             body = self._extract_imap_body(email_message)
+            print(body)
             if body:
                 # 使用正则表达式查找6位数字验证码
                 code_match = re.search(r"\b\d{6}\b", body)
