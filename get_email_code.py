@@ -70,8 +70,8 @@ class EmailVerificationHandler:
             if body:
                 # 使用正则表达式查找6位数字验证码
                 # fix 避免数字域名干扰
-                pattern = r'(?<=Enter the code below[^\d]*)\d{6}'
-                code_match = re.search(pattern, body)
+                pattern = r'^\d{6}$'
+                code_match = re.search(pattern, body, re.MULTILINE)
                 if code_match:
                     code = code_match.group()
                     # 删除邮件
